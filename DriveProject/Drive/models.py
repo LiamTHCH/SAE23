@@ -13,6 +13,8 @@ class Produits(models.Model):
     photo = models.ImageField()
     maraue = models.CharField(max_length=30)
     categorie = models.ForeignKey(Categories,on_delete=models.SET_NULL)
+    stock = models.PositiveIntegerField()
+    prix = models.DecimalField(max_digits=10, decimal_places=2)
 
 class Clients(models.Model):
     nom = models.CharField(max_length=30)
