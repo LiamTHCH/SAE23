@@ -18,3 +18,4 @@ from .produit import ProduitUpdateView
 from .produit import ProduitDetailView
 from .produit import ProduitCreateView
 from .produit import ProduitListView
+from .view import *
