@@ -1,0 +1,5 @@
+from .categories_delete import CategoriesDeleteView
+from .categories_update import CategoriesUpdateView
+from .categories_detail import CategoriesDetailView
+from .categories_create import CategoriesCreateView
+from .categories_list import CategoriesListView

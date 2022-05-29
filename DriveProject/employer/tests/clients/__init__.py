@@ -1,0 +1,5 @@
+from .clients_delete_test import ClientsDeleteTestCase
+from .clients_update_test import ClientsUpdateTestCase
+from .clients_detail_test import ClientsDetailTestCase
+from .clients_create_test import ClientsCreateTestCase
+from .clients_list_test import ClientsListTestCase

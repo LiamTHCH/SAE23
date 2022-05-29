@@ -1,0 +1,5 @@
+from .produit_delete_test import ProduitDeleteTestCase
+from .produit_update_test import ProduitUpdateTestCase
+from .produit_detail_test import ProduitDetailTestCase
+from .produit_create_test import ProduitCreateTestCase
+from .produit_list_test import ProduitListTestCase
