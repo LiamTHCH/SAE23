@@ -32,6 +32,10 @@ class Clients(models.Model):
 
 class Commandes(models.Model):
     client = models.ForeignKey(Clients,on_delete=models.CASCADE)
-    date = models.CharField(max_length=400)
+    date = models.DateTimeField()
     commande = models.TextField(null=False)
+
+    def __str__(self) -> str:
+        return self.commande
+    
 
