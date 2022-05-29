@@ -23,6 +23,6 @@ class Clients(models.Model):
     addr = models.CharField(max_length=50)
 
 class Commandes(models.Model):
-    client = models.ForeignKey(Clients)
+    client = models.ForeignKey(Clients,on_delete=models.CASCADE)
     date = models.CharField(max_length=400)
 
