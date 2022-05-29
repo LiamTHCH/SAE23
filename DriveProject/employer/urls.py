@@ -22,7 +22,7 @@ from employer.views import ProduitListView
 from django.urls import path, include
 from employer.views import *
 urlpatterns = [
-path('', main),
+path('', main,name='home'),
 path('produit/', index),
 path('produit/list/', ProduitListView.as_view(), name='produit_list'),
 path('produit/create/', ProduitCreateView.as_view(), name='produit_create'),
