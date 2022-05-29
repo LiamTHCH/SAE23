@@ -1,9 +1,13 @@
 from django.db import models
 
+
 # Create your models here.
 class Categories(models.Model):
     nom = models.CharField(max_length=30,null=False)
     descriptif = models.TextField(max_length=100,null=True)
+
+    def __str__(self) -> str:
+        return self.nom
 
 class Produits(models.Model):
     nom = models.CharField(max_length=30,null=False)
@@ -14,13 +18,20 @@ class Produits(models.Model):
     stock = models.PositiveIntegerField()
     prix = models.DecimalField(max_digits=10, decimal_places=2)
 
+    def __str__(self) -> str:
+        return self.nom
+
 class Clients(models.Model):
     nom = models.CharField(max_length=30)
     prenom = models.CharField(max_length=30)
     date_insci = models.DateField()
     addr = models.CharField(max_length=50)
 
+    def __str__(self) -> str:
+        return str(str(self.prenom).upper()+" " +str(self.nom))
+
 class Commandes(models.Model):
     client = models.ForeignKey(Clients,on_delete=models.CASCADE)
     date = models.CharField(max_length=400)
+    commande = models.TextField(null=False)
 

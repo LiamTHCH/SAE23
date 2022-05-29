@@ -13,9 +13,9 @@
         {% for Categories in object_list %}
         <tr>
             <td>{{ Categories }}</td>
-            <td><a href="{% url "Categories_detail" Categories.id %}">view</a></td>
-            <td><a href="{% url "Categories_update" Categories.id %}">edit</a></td>
-            <td><a href="{% url "Categories_delete" Categories.id %}">delete</a></td>
+            <td><a href="{% url "categories_detail" Categories.id %}">view</a></td>
+            <td><a href="{% url "categories_update" Categories.id %}">edit</a></td>
+            <td><a href="{% url "categories_delete" Categories.id %}">delete</a></td>
         </tr>
         {% endfor %}
     </tbody>
