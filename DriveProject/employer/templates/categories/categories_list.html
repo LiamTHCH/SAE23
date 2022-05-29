@@ -1,3 +1,9 @@
+{% extends "main.html" %} 
+{% block title %}
+Categories
+{% endblock %}
+{% block content %}
+
 <h2 class="form-title">Categories</h2>
 
 <table class="table table-fluid">
@@ -23,3 +29,4 @@
 
 <a href="{% url "categories_create" %}">New</a>
 </div>
+{% endblock %}
