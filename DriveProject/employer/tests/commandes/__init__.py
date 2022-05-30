@@ -1,0 +1,5 @@
+from .commandes_delete_test import CommandesDeleteTestCase
+from .commandes_update_test import CommandesUpdateTestCase
+from .commandes_detail_test import CommandesDetailTestCase
+from .commandes_create_test import CommandesCreateTestCase
+from .commandes_list_test import CommandesListTestCase

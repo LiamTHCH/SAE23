@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Espace Employer{% endblock %} </title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url "home"%}">Menu</a>
+        <div class="subnav">
+          <button class="subnavbtn">Produit <i class="fa fa-caret-down"></i></button>
+          <div class="subnav-content">
+            <a href="{% url "produit_create"%}">Ajouter</a>
+            <a href="{% url "produit_list"%}">Liste</a>
+            <a href="#careers">Chercher</a>
+          </div>
+        </div> 
+        <div class="subnav">
+          <button class="subnavbtn">Categories <i class="fa fa-caret-down"></i></button>
+          <div class="subnav-content">
+            <a href="{% url "categories_create"%}">Ajouter</a>
+            <a href="{% url "categories_list"%}">Liste</a>
+            <a href="#package">Chercher</a>
+          </div>
+        </div> 
+        <div class="subnav">
+          <button class="subnavbtn">Commandes <i class="fa fa-caret-down"></i></button>
+          <div class="subnav-content">
+            <a href="{% url "commandes_create"%}">Ajouter</a>
+            <a href="{% url "commandes_list"%}">Liste</a>
+          </div>
+        </div>
+        <div class="subnav">
+          <button class="subnavbtn">Clients <i class="fa fa-caret-down"></i></button>
+          <div class="subnav-content">
+            <a href="{% url "clients_create"%}">Ajouter</a>
+            <a href="{% url "clients_list"%}">Liste</a>
+          </div>
+        </div>
+        <a href="#contact">Contact</a>
+      </div>
+      
+
+    <div id="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>
