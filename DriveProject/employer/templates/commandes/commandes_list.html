@@ -18,9 +18,9 @@ Liste Commandes
         {% for Commandes in object_list %}
         <tr>
             <td>{{ Commandes }}</td>
-            <td><a href="{% url "Commandes_detail" Commandes.id %}">view</a></td>
-            <td><a href="{% url "Commandes_update" Commandes.id %}">edit</a></td>
-            <td><a href="{% url "Commandes_delete" Commandes.id %}">delete</a></td>
+            <td><a href="{% url "commandes_detail" Commandes.id %}">view</a></td>
+            <td><a href="{% url "commandes_update" Commandes.id %}">edit</a></td>
+            <td><a href="{% url "commandes_delete" Commandes.id %}">delete</a></td>
         </tr>
         {% endfor %}
     </tbody>

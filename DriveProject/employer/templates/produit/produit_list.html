@@ -18,9 +18,9 @@ Liste Produits
         {% for Produit in object_list %}
         <tr>
             <td>{{ Produit }}</td>
-            <td><a href="{% url "Produit_detail" Produit.id %}">view</a></td>
-            <td><a href="{% url "Produit_update" Produit.id %}">edit</a></td>
-            <td><a href="{% url "Produit_delete" Produit.id %}">delete</a></td>
+            <td><a href="{% url "produit_detail" Produit.id %}">view</a></td>
+            <td><a href="{% url "produit_update" Produit.id %}">edit</a></td>
+            <td><a href="{% url "produit_delete" Produit.id %}">delete</a></td>
         </tr>
         {% endfor %}
     </tbody>
