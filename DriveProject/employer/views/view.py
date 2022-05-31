@@ -2,6 +2,8 @@ from operator import mod
 from django.shortcuts import render
 from employer.models import *
 from django.http import HttpResponseRedirect
+import copy
+import ast
 def getList(dict):
     ls = []
     try:
@@ -20,12 +22,12 @@ def main(req):
 def add_item(req,item,qt,cmd):
     cmd1 = Commandes.objects.get(id=cmd)
     item = Produits.objects.get(id=item)
-    dic = cmd1.commande
-    item = str(item)
-    print(item)
+    dic = ast.literal_eval(cmd1.commande)
+    item1 = copy.copy(str(item))
     print(dic)
-    if item in getList(dic):
-        dic[item] = dic[item] + 1
+    if item1 in getList(dic):
+        dic[item1] = dic[item1] + 1
     else:
-        dic[str(item)] = 1
-    return HttpResponseRedirect("commandes/detail/%s/"% cmd)
+        dic[item1] = 1
+    Commandes.objects.filter(id=cmd).update(commande= str(dic))
+    return HttpResponseRedirect("/employer/commandes/detail/%s/"% cmd)

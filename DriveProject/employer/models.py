@@ -13,13 +13,13 @@ class Produits(models.Model):
     nom = models.CharField(max_length=30,null=False)
     date_per = models.DateField(null=False)
     photo = models.ImageField(upload_to="employer/static/img")
-    maraue = models.CharField(max_length=30)
+    marque = models.CharField(max_length=30)
     categorie = models.ForeignKey(Categories,on_delete=models.SET_NULL,null=True)
     stock = models.PositiveIntegerField()
     prix = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self) -> str:
-        return self.nom
+        return self.nom + " " + self.marque
 
 class Clients(models.Model):
     nom = models.CharField(max_length=30)
