@@ -1,0 +1,27 @@
+{% extends "main.html" %} 
+{% block title %}
+Liste Commandes
+{% endblock %}
+{% block content %}
+<h2 class="Titre">Commande n°{{CMD.id}}</h2>
+<table class="sh_commande">
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for key, value in items %} 
+        <tr>
+            <td>{{ key }}</td>
+            {% for key2, value2 in value.items %} 
+                {% if key2 == "Amount" %} 
+                    <td>{{ value2 }}</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -60,3 +60,28 @@ body {
   .subnav:hover .subnav-content {
     display: block;
   }
+
+
+  table{
+    border-collapse: collapse;
+    width: 100%;
+    overflow: scroll;
+    margin: auto;
+}
+
+td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: left;
+    padding: 10px;
+    text-align: center;
+  }
+
+#content{
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+}

@@ -26,8 +26,18 @@ def add_item(req,item,qt,cmd):
     item1 = copy.copy(str(item))
     print(dic)
     if item1 in getList(dic):
-        dic[item1] = dic[item1] + 1
+        dic[item1] = {"id": item.id, "Amount": qt}
     else:
-        dic[item1] = 1
+        dic[item1] = {"id": item.id, "Amount": 1}
+
     Commandes.objects.filter(id=cmd).update(commande= str(dic))
     return HttpResponseRedirect("/employer/commandes/detail/%s/"% cmd)
+
+
+
+
+def sh_commande(req,cmd):
+    cmd1 = Commandes.objects.get(id=cmd)
+    items = ast.literal_eval(cmd1.commande)
+    items = items.items()
+    return render(req,"commandes/commande_view.html",{"CMD":cmd1,"items":items})
