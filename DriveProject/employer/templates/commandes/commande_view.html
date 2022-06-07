@@ -9,6 +9,7 @@ Liste Commandes
         <tr>
             <th>Produit</th>
             <th>Nombre</th>
+            <th>Supprimer</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,9 @@ Liste Commandes
             {% for key2, value2 in value.items %} 
                 {% if key2 == "Amount" %} 
                     <td>{{ value2 }}</td>
+                {% endif %}
+                {% if key2 == "id" %} 
+                    <td><a href="/employer/commandes/add/{{CMD.id}}/{{value2}}/0">Delete</a></td>
                 {% endif %}
             {% endfor %}
         </tr>
