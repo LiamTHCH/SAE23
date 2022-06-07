@@ -26,7 +26,10 @@ def add_item(req,item,qt,cmd):
     item1 = copy.copy(str(item))
     print(dic)
     if item1 in getList(dic):
-        dic[item1] = {"id": item.id, "Amount": qt}
+        if qt ==0:
+            dic[item1] = {"id": item.id, "Amount": qt}
+        else:
+            del dic[item1]
     else:
         dic[item1] = {"id": item.id, "Amount": 1}
 
