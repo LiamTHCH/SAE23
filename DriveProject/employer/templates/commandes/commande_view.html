@@ -41,6 +41,7 @@ Liste Commandes
     <option value="{{items.id}}">{{items}} {{items.prix}}€</option>
 {% endfor %}
 </select>
+<label for="quantiter">Quantiter:</label>
 <input type="number" name="quantiter" min="1" required="required"> 
 {% csrf_token %}
 <br>

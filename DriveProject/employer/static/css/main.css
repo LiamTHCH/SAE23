@@ -89,3 +89,6 @@ hr{
   width: 75%;
   border-top: 5px solid black;
 }
+.invisible{
+  visibility: hidden;
+}

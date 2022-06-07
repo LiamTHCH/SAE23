@@ -33,7 +33,7 @@ class Clients(models.Model):
 class Commandes(models.Model):
     client = models.ForeignKey(Clients,on_delete=models.CASCADE)
     date = models.DateTimeField()
-    commande = models.TextField(null=True)
+    commande = models.TextField(null=False,default="{}")
 
     def __str__(self) -> str:
         return str(self.id) +"" +self.commande

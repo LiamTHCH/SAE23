@@ -7,4 +7,5 @@ class CommandesCreateView(CreateView):
     model = Commandes
     fields = '__all__'
     template_name = "commandes/commandes_create.html"
-    success_url = reverse_lazy('commandes_list')
+    def get_success_url(self):
+        return reverse_lazy('commandes_show',args=(self.object.id,))
