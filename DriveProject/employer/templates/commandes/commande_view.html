@@ -9,6 +9,7 @@ Liste Commandes
         <tr>
             <th>Produit</th>
             <th>Nombre</th>
+            <th>Supprimer</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,9 @@ Liste Commandes
                 {% if key2 == "Amount" %} 
                     <td>{{ value2 }}</td>
                 {% endif %}
+                {% if key2 == "id" %} 
+                    <td><a href="/employer/add/{{CMD.id}}/{{key2}}/0"></a></td>
+            {   % endif %}
             {% endfor %}
         </tr>
         {% endfor %}
