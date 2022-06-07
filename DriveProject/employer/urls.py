@@ -45,5 +45,6 @@ path('categories/detail/<int:pk>/', CategoriesDetailView.as_view(), name='catego
 path('categories/update/<int:pk>/', CategoriesUpdateView.as_view(), name='categories_update'),
 path('categories/delete/<int:pk>/', CategoriesDeleteView.as_view(), name='categories_delete'),
 path('commandes/add/<int:cmd>/<int:item>/<int:qt>/', add_item),
+path('commandes/del/<int:cmd>/<int:item>/', del_item),
 path('commandes/sh/<int:cmd>/', sh_commande,name='commandes_show'),
 ]

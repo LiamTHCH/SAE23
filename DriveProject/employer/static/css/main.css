@@ -85,3 +85,7 @@ td, th {
   text-align: center;
   margin: auto;
 }
+hr{
+  width: 75%;
+  border-top: 5px solid black;
+}

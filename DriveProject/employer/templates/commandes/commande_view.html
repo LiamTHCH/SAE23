@@ -8,7 +8,9 @@ Liste Commandes
     <thead>
         <tr>
             <th>Produit</th>
-            <th>Nombre</th>
+            <th>Quantiter</th>
+            <th>Details Produit</th>
+            <th>Modifier</th>
             <th>Supprimer</th>
         </tr>
     </thead>
@@ -21,11 +23,35 @@ Liste Commandes
                     <td>{{ value2 }}</td>
                 {% endif %}
                 {% if key2 == "id" %} 
-                    <td><a href="/employer/commandes/add/{{CMD.id}}/{{value2}}/0">Delete</a></td>
+                    <td><a href="/employer/produit/detail/{{value2}}/">Details</a></td>
+                    <td><label for="quantiter">Quantiter:</label><form action="/employer/commandes/add/{{CMD.id}}/{{value2}}/1/" method="post"><input type="number" name="quantiter" min="1"> {% csrf_token %} <input type="submit" value="Changer"></form></td>
+                    <td><a href="/employer/commandes/del/{{CMD.id}}/{{value2}}/">Delete</a></td>
                 {% endif %}
             {% endfor %}
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<hr>
+<h2>Ajout Produit</h2>
+<form action="/employer/commandes/add/{{CMD.id}}/0/1/" method="post" id="form_ajout">
+<select id="select-state" placeholder="Ajouter produit" name="produit" form="form_ajout">
+<option value="">Selectionner Produit</option>
+{% for items in shop_items %}
+    <option value="{{items.id}}">{{items}} {{items.prix}}€</option>
+{% endfor %}
+</select>
+<input type="number" name="quantiter" min="1" required="required"> 
+{% csrf_token %}
+<br>
+<input type="submit" value="Ajouter">
+</form>
+
+<script>
+      $(document).ready(function () {
+      $('select').selectize({
+          sortField: 'text'
+      });
+  });
+</script>
 {% endblock %}
