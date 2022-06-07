@@ -21,8 +21,8 @@ Liste Commandes
                     <td>{{ value2 }}</td>
                 {% endif %}
                 {% if key2 == "id" %} 
-                    <td><a href="/employer/add/{{CMD.id}}/{{key2}}/0"></a></td>
-            {   % endif %}
+                    <td><a href="/employer/commandes/add/{{CMD.id}}/{{value2}}/0">Delete</a></td>
+                {% endif %}
             {% endfor %}
         </tr>
         {% endfor %}
