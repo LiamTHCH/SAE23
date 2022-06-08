@@ -92,3 +92,30 @@ hr{
 .invisible{
   visibility: hidden;
 }
+
+form li{
+  list-style: none;
+  margin: auto;
+  width: auto;
+  padding-top: 10px;
+}
+
+textarea {
+  padding: 10px;
+  max-width: 100%;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
+}
+.produit_det{
+  display: flex;
+}
+.pdt_dets{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.pdt_img{
+  width: 50%;
+}

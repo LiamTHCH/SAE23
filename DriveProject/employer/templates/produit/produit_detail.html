@@ -3,7 +3,16 @@
 Details Produit
 {% endblock %}
 {% block content %}
-<h2 class="form-title">"Produit Details"</h2>
-<h1>Produit Details</h1>
-<h2>{{object}}</h2>
+<h2 class="form-title">Produit Details</h2>
+<div class="produit_det">
+<div class="pdt_img"><img src="{{object.photo.url}}" alt="" width="500" height="600"></div>
+    <div class="pdt_dets">
+        <h1>{{object.nom}}</h1>
+        <h2>Marque : {{object.marque}}</h2>
+        <h2>Categorie : {{object.categorie}}</h2>
+        <h2>Date perenption : {{object.date_per}}</h2>
+        <h2>Stoque : {{object.stock}}</h2>
+        <h2>Prix : {{object.prix}} € TTC</h2>
+    </div>
+</div>
 {% endblock %}
