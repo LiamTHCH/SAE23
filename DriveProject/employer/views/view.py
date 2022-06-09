@@ -31,16 +31,16 @@ def add_item(req,item,qt,cmd):
         item1 = copy.copy(str(item))
         print(item)
         if item1 in getList(dic):
-            dic[item1] = {"Amount": qt,"id": item.id,"price":item.prix}
+            dic[item1] = {"Amount": qt,"id": item.id,"price":float(item.prix)}
         else:
-            dic[item1] = {"Amount": qt,"id": item.id,"price":item.prix}
+            dic[item1] = {"Amount": qt,"id": item.id,"price":float(item.prix)}
     else:
         item = Produits.objects.get(id=item)
         item1 = copy.copy(str(item))
         if item1 in getList(dic):
-            dic[item1] = {"Amount": qt,"id": item.id,"price":item.prix}
+            dic[item1] = {"Amount": qt,"id": item.id,"price":float(item.prix)}
         else:
-            dic[item1] = {"Amount": 1,"id": item.id,"price":item.prix}
+            dic[item1] = {"Amount": 1,"id": item.id,"price":float(item.prix)}
 
     Commandes.objects.filter(id=cmd).update(commande= str(dic))
     return HttpResponseRedirect("/employer/commandes/sh/%s/"% cmd)
