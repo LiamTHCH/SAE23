@@ -47,4 +47,5 @@ path('categories/delete/<int:pk>/', CategoriesDeleteView.as_view(), name='catego
 path('commandes/add/<int:cmd>/<int:item>/<int:qt>/', add_item),
 path('commandes/del/<int:cmd>/<int:item>/', del_item),
 path('commandes/sh/<int:cmd>/', sh_commande,name='commandes_show'),
+path('signup/', signup,name='signup'),
 ]
