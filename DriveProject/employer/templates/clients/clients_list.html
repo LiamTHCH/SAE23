@@ -18,9 +18,9 @@ Liste Clients
         {% for Clients in object_list %}
         <tr>
             <td>{{ Clients }}</td>
-            <td><a href="{% url "Clients_detail" Clients.id %}">view</a></td>
-            <td><a href="{% url "Clients_update" Clients.id %}">edit</a></td>
-            <td><a href="{% url "Clients_delete" Clients.id %}">delete</a></td>
+            <td><a href="{% url "clients_detail" Clients.id %}">view</a></td>
+            <td><a href="{% url "clients_update" Clients.id %}">edit</a></td>
+            <td><a href="{% url "clients_delete" Clients.id %}">delete</a></td>
         </tr>
         {% endfor %}
     </tbody>

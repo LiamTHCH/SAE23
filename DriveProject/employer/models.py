@@ -12,7 +12,7 @@ class Categories(models.Model):
 class Produits(models.Model):
     nom = models.CharField(max_length=30,null=False)
     date_per = models.DateField(null=False)
-    photo = models.ImageField(upload_to="employer/static/img")
+    photo = models.ImageField()
     marque = models.CharField(max_length=30)
     categorie = models.ForeignKey(Categories,on_delete=models.SET_NULL,null=True)
     stock = models.PositiveIntegerField()
@@ -33,7 +33,7 @@ class Clients(models.Model):
 class Commandes(models.Model):
     client = models.ForeignKey(Clients,on_delete=models.CASCADE)
     date = models.DateTimeField()
-    commande = models.TextField(null=True)
+    commande = models.TextField(null=False,default="{}")
 
     def __str__(self) -> str:
         return str(self.id) +"" +self.commande

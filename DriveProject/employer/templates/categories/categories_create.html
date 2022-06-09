@@ -6,7 +6,7 @@ Ajout Categories
 <h2 class="form-title">Add Categories</h2>
     <form class="" method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_ul }}
         <input type="submit" value="Submit" />
     </form>
 </div>

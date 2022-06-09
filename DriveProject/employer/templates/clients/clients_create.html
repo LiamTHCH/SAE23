@@ -6,7 +6,7 @@ Creation Clients
 <h2 class="form-title">Add Clients</h2>
     <form class="" method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_ul }}
         <input type="submit" value="Submit" />
     </form>
 </div>
