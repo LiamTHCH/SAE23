@@ -88,3 +88,6 @@ def signup(request):
 def logout_user(req):
     logout(req)
     return redirect('home')
+
+def login(request):
+    pass

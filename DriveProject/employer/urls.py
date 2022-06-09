@@ -49,4 +49,5 @@ path('commandes/del/<int:cmd>/<int:item>/', del_item),
 path('commandes/sh/<int:cmd>/', sh_commande,name='commandes_show'),
 path('signup/', signup,name='signup'),
 path('logout/', logout,name="logout"),
+path('login/', login,name="login"),
 ]
