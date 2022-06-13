@@ -90,4 +90,14 @@ def logout_user(req):
     return redirect('home')
 
 def login(request):
-    return render(request,"login.html")
+    if request.method == 'POST':
+        try:
+           user = request.POST.get('userneme')
+           passwd = request.POST.get('passwd')
+           authenticate(user,passwd)
+           return HttpResponseRedirect("/employer/")
+        except:
+            print("erreur")
+            return render(request,"login.html")
+    else:
+        return render(request,"login.html")
