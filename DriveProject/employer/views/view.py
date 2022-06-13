@@ -14,6 +14,7 @@ from fpdf import FPDF
 from barcode import EAN13
 from barcode.writer import ImageWriter
 from employer.decorators import *
+import os
 
 
 def getList(dict):
@@ -139,17 +140,32 @@ def search_commande(req):
 
 
 def create_pdf(request,id):
+    os.chdir("media/")
+    print("START")
     cmd = Commandes.objects.get(id=id)
     dico =  ast.literal_eval(cmd.commande)
+    user = cmd.client
+
+
+    date = cmd.date.strftime("%Y%m%d")
+    number = str(date)+str(id)
+    while len(number) != 12:
+        print("loop")
+        number = str(number)+"0"
+
+    my_code = EAN13(number, writer=ImageWriter())
+    my_code.save("TEMP/codebar")
+    Total = 0
+    print("PDF START")
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Arial", size=18)
-    pdf.image('logo.png', 10, 8, 50)
+    pdf.image('../employer/static/img/logo.png', 10, 8, 50)
     pdf.cell(190, 20, txt="LER Drive", ln=1, align='C')
     pdf.cell(190, 10, txt="We got what you need!", ln=2, align='C')
-    pdf.cell(20, 10, txt="Nom", ln=2, align='C')
-    pdf.cell(20, 10, txt="Prenom", ln=2, align='C')
-    pdf.cell(20, 10, txt="Email", ln=2, align='C')
+    pdf.cell(20, 10, txt=user.nom, ln=2, align='C')
+    pdf.cell(20, 10, txt=user.prenom, ln=2, align='C')
+    pdf.cell(100, 10, txt=user.addr, ln=2, align='C')
     line_height = pdf.font_size * 2.5
     epw = pdf.w - 2*pdf.l_margin
     col_width = epw / 4
@@ -163,9 +179,15 @@ def create_pdf(request,id):
     pdf.cell(col_width, th, str("Prix-total"), border=1)
     pdf.ln(6.35)
     for row in getList(dico):
+        Total = Total + (float(dico[row]["Amount"]) * float(dico[row]["price"]))
         pdf.cell(col_width, th, str(row), border=1)
         pdf.cell(col_width, th, str(dico[row]["Amount"]), border=1)
         pdf.cell(col_width, th, str(str(dico[row]["price"])+"€"), border=1)
         pdf.cell(col_width, th, str(str(float(dico[row]["Amount"]) * float(dico[row]["price"]))+"€"), border=1)
         pdf.ln(th)
-    pdf.image("codebar.png", 130, 45, 60)
+
+    pdf.multi_cell(0, 5, 'Total:' + '\n' +'%s €' % Total)
+    pdf.image("TEMP/codebar.png", 130, 45, 60)
+    pdf.output("PDF/%s.pdf" % number)
+    pdf_path = str("%s.pdf" % number)
+    return HttpResponseRedirect("/media/PDF/%s"% pdf_path)
