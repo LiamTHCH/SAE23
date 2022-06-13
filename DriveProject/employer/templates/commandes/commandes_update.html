@@ -1,12 +1,23 @@
 {% extends "main.html" %} 
 {% block title %}
-Mise a jour Commande
+Creation Commandes
 {% endblock %}
 {% block content %}
-<h2 class="form-title">Update Commandes</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
-</form>
+<h2 class="form-title">Editer Date/Client</h2>
+    <form class="" method="post">
+        {% csrf_token %}
+        {{ form.client }}
+        <div class="datepicker" id="picker">{{ form.date }}</div>
+        <input type="submit" value="Valider" />
+        <div class="invisible">{{ form.commande }}</div>
+    </form>
+<script>
+    $(document).ready(function () {
+    $('select').selectize({
+        sortField: 'text'
+    });
+});
+    
+</script>
+
 {% endblock %}

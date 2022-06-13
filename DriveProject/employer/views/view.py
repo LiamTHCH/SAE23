@@ -10,7 +10,9 @@ from django.contrib.auth.forms import *
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.admin.views.decorators import staff_member_required
-
+from fpdf import FPDF
+from barcode import EAN13
+from barcode.writer import ImageWriter
 from employer.decorators import *
 
 
@@ -129,3 +131,41 @@ def change_passwd(request):
         return HttpResponseRedirect("/employer/")
     else:
         return render(request,"change.html")
+
+def search_commande(req):
+    query = Commandes.objects.all()
+    print(query)
+    return render(req,"commandes/search.html",{'commande': query})
+
+
+def create_pdf(request,id):
+    cmd = Commandes.objects.get(id=id)
+    dico =  ast.literal_eval(cmd.commande)
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=18)
+    pdf.image('logo.png', 10, 8, 50)
+    pdf.cell(190, 20, txt="LER Drive", ln=1, align='C')
+    pdf.cell(190, 10, txt="We got what you need!", ln=2, align='C')
+    pdf.cell(20, 10, txt="Nom", ln=2, align='C')
+    pdf.cell(20, 10, txt="Prenom", ln=2, align='C')
+    pdf.cell(20, 10, txt="Email", ln=2, align='C')
+    line_height = pdf.font_size * 2.5
+    epw = pdf.w - 2*pdf.l_margin
+    col_width = epw / 4
+    th = pdf.font_size
+    pdf.ln(10)
+    pdf.add_font('Times', '', 'c:/windows/fonts/arial.ttf', uni=True)
+    pdf.set_font('Times', '', 12)
+    pdf.cell(col_width, th, str("Article"), border=1)
+    pdf.cell(col_width, th, str("Quantité"), border=1)
+    pdf.cell(col_width, th, str("Prix-unitaire"), border=1)
+    pdf.cell(col_width, th, str("Prix-total"), border=1)
+    pdf.ln(6.35)
+    for row in getList(dico):
+        pdf.cell(col_width, th, str(row), border=1)
+        pdf.cell(col_width, th, str(dico[row]["Amount"]), border=1)
+        pdf.cell(col_width, th, str(str(dico[row]["price"])+"€"), border=1)
+        pdf.cell(col_width, th, str(str(float(dico[row]["Amount"]) * float(dico[row]["price"]))+"€"), border=1)
+        pdf.ln(th)
+    pdf.image("codebar.png", 130, 45, 60)

@@ -53,6 +53,7 @@ path('signup/', signup,name='signup'),
 path('logout/', logout_user,name="logout"),
 path('login/', login_user,name="login"),
 path('change_passwd/', change_passwd,name="change_passwd"),
+path('commandes/search/', search_commande,name='commandes_search'),
 ]
 
 
