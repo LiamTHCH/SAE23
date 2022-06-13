@@ -10,7 +10,8 @@ from django.contrib.auth.forms import *
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.admin.views.decorators import staff_member_required
-login_url = "/employer/login"
+from employer.decorators import *
+
 def getList(dict):
 
 
@@ -22,15 +23,15 @@ def getList(dict):
     return ls
 
 
-@staff_member_required
+@staff_is_required
 def index(req):
     return render(req,"index.html")
 
-@staff_member_required
+@staff_is_required
 def main(req):
     return render(req,"main.html")
 
-@staff_member_required(login_url='admin:login')
+@staff_is_required
 def add_item(req,item,qt,cmd):
     cmd1 = Commandes.objects.get(id=cmd)
     dic = ast.literal_eval(cmd1.commande)
@@ -57,7 +58,7 @@ def add_item(req,item,qt,cmd):
     Commandes.objects.filter(id=cmd).update(commande= str(dic))
     return HttpResponseRedirect("/employer/commandes/sh/%s/"% cmd)
 
-@staff_member_required
+@staff_is_required
 def del_item(req,item,cmd):
     cmd1 = Commandes.objects.get(id=cmd)
     item = Produits.objects.get(id=item)
@@ -69,7 +70,7 @@ def del_item(req,item,cmd):
     return HttpResponseRedirect("/employer/commandes/sh/%s/"% cmd)
 
 
-@staff_member_required
+@staff_is_required
 def sh_commande(req,cmd):
     cmd1 = Commandes.objects.get(id=cmd)
     items = ast.literal_eval(cmd1.commande)
@@ -77,7 +78,7 @@ def sh_commande(req,cmd):
     items = items.items()
     return render(req,"commandes/commande_view.html",{"CMD":cmd1,"items":items,"shop_items":shop_items})
 
-@staff_member_required
+@staff_is_required
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -92,12 +93,12 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
 
-@staff_member_required
+
 def logout_user(req):
     logout(req)
     return redirect('home')
 
-@staff_member_required
+
 def login_user(request):
     if request.method == 'POST':
         users = request.POST.get('user')
@@ -111,6 +112,7 @@ def login_user(request):
     else:
         return render(request,"login.html")
 
+@staff_is_required
 def change_passwd(request):
     if request.method == 'POST':
         users = request.POST.get('user')

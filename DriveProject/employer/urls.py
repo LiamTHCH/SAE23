@@ -21,6 +21,8 @@ from employer.views import ProduitCreateView
 from employer.views import ProduitListView
 from django.urls import path, include
 from employer.views import *
+from employer.decorators import *
+
 urlpatterns = [
 path('', main,name='home'),
 path('produit/', index),
