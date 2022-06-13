@@ -134,9 +134,24 @@ def change_passwd(request):
         return render(request,"change.html")
 
 def search_commande(req):
-    query = Commandes.objects.all()
-    print(query)
-    return render(req,"commandes/search.html",{'commande': query})
+    if req.method == 'POST':
+        print(req.POST.get('commande'))
+        if (req.POST.get('commande') is not None) and (req.POST.get('commande') != ""):
+            return HttpResponseRedirect("/employer/commandes/sh/%s/"% req.POST.get('commande'))
+        else:
+            return HttpResponseRedirect("/employer/commandes/search/")
+        
+    else:
+        query = Commandes.objects.all()
+        ls = []
+        for item in query:
+            date = item.date.strftime("%Y%m%d")
+            id = item.id
+            number = str(date)+str(id)
+            while len(number) != 12:
+                number = str(number)+"0"
+            ls = ls + [(str(item),item.id,number)]
+        return render(req,"commandes/search.html",{'commande': ls})
 
 
 def create_pdf(request,id):

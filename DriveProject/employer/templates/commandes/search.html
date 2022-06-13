@@ -3,9 +3,15 @@
 Liste Commandes
 {% endblock %}
 {% block content %}
-<select id="select-state" placeholder="Chercher une commande" name="commande" form="form_cherche">
-    <option value=""></option>
-    {% for items in commande %}
-        <option value="{{items.id}}">{{items.id}}</option>
-    {% endfor %}
+<form action="" method="POST" id="form_ajout">
+    {% csrf_token %}
+    <select id="select-state" placeholder="Chercher une commande" name="commande" form="form_ajout">
+        <option value="">Selectionner Produit</option>
+        {% for comande,id,ean in commande  %}
+            <option value="{{id}}">{{ean}}</option>
+        {% endfor %}
+    <input type="submit" value="Chercher">
+</form>
+
+
 {% endblock %}
