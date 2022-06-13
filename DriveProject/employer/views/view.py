@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 import copy
 import ast
 from django.contrib.auth import login, authenticate,logout
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import *
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 def getList(dict):
@@ -90,4 +90,4 @@ def logout_user(req):
     return redirect('home')
 
 def login(request):
-    pass
+    return render(request,"login.html")
