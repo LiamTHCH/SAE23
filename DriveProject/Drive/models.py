@@ -33,7 +33,19 @@ class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     qty = models.IntegerField(default=0)
     ordered = models.BooleanField(default=False)
+    
+
+    def __str__(self) -> str:
+        return f"{self.product.name} ({self.qty})"
  
  
  
 
+class Cart(models.Model):
+    user = models.OneToOneField("auth.User", on_delete=models.CASCADE)
+    orders = models.ManyToManyField(Order, blank=True)
+    ordered = models.BooleanField(default=False)
+    odate = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self) -> str:
+        return f"panier de {self.user.username}"
