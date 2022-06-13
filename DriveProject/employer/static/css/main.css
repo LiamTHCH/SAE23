@@ -5,7 +5,8 @@ body {
   
   .navbar {
     overflow: hidden;
-    background-color: #333; 
+    background-color: white; 
+    height: 100%;
   }
   
   .navbar a {
@@ -15,6 +16,7 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    height: 100%;
   }
   
   .subnav {
@@ -26,7 +28,7 @@ body {
     font-size: 16px;  
     border: none;
     outline: none;
-    color: white;
+    color: black;
     padding: 14px 16px;
     background-color: inherit;
     font-family: inherit;
@@ -34,26 +36,26 @@ body {
   }
   
   .navbar a:hover, .subnav:hover .subnavbtn {
-    background-color: red;
+    background-color: lightgrey;
   }
   
   .subnav-content {
     display: none;
     position: absolute;
     left: 0;
-    background-color: red;
+    background-color: whitesmoke;
     width: 100%;
     z-index: 1;
   }
   
-  .subnav-content a {
+  .subnav-content a { 
     float: left;
-    color: white;
+    color: black;
     text-decoration: none;
   }
   
   .subnav-content a:hover {
-    background-color: #eee;
+    background-color: lightgrey;
     color: black;
   }
   
@@ -118,4 +120,13 @@ textarea {
 }
 .pdt_img{
   width: 50%;
+}
+
+
+
+.logo{
+  max-width:100%;
+  max-height:100%;
+  object-fit: contain;
+  height: 50px;
 }
