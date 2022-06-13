@@ -74,7 +74,6 @@ def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            #form.save()
             usernam = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             email = form.cleaned_data.get('email')
@@ -89,15 +88,27 @@ def logout_user(req):
     logout(req)
     return redirect('home')
 
-def login(request):
+def login_user(request):
     if request.method == 'POST':
-        try:
-           user = request.POST.get('userneme')
-           passwd = request.POST.get('passwd')
-           authenticate(user,passwd)
-           return HttpResponseRedirect("/employer/")
-        except:
-            print("erreur")
+        users = request.POST.get('user')
+        passwd = request.POST.get('passwd')
+        user = authenticate(username=users, password=passwd)
+        if user is not None and user.is_active:
+            login(request, user)
+            return HttpResponseRedirect("/employer/")
+        else:
             return render(request,"login.html")
     else:
         return render(request,"login.html")
+
+def change_passwd(request):
+    if request.method == 'POST':
+        users = request.POST.get('user')
+        passwd = request.POST.get('passwd')
+        u = User.objects.get(username=users)
+        print(u)
+        u.set_password(passwd)
+        u.save()
+        return HttpResponseRedirect("/employer/")
+    else:
+        return render(request,"change.html")

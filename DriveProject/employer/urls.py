@@ -48,6 +48,9 @@ path('commandes/add/<int:cmd>/<int:item>/<int:qt>/', add_item),
 path('commandes/del/<int:cmd>/<int:item>/', del_item),
 path('commandes/sh/<int:cmd>/', sh_commande,name='commandes_show'),
 path('signup/', signup,name='signup'),
-path('logout/', logout,name="logout"),
-path('login/', login,name="login"),
+path('logout/', logout_user,name="logout"),
+path('login/', login_user,name="login"),
+path('change_passwd/', change_passwd,name="change_passwd"),
 ]
+
+
