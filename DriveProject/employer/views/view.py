@@ -1,10 +1,17 @@
 from operator import mod
+from tokenize import group
 from django.shortcuts import render
 from employer.models import *
 from django.http import HttpResponseRedirect
 import copy
 import ast
+from django.contrib.auth import login, authenticate,logout
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 def getList(dict):
+
+
     ls = []
     try:
         ls =  dict.keys()
@@ -62,3 +69,25 @@ def sh_commande(req,cmd):
     shop_items = Produits.objects.all()
     items = items.items()
     return render(req,"commandes/commande_view.html",{"CMD":cmd1,"items":items,"shop_items":shop_items})
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            #form.save()
+            usernam = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            email = form.cleaned_data.get('email')
+            user = User.objects.create(username=str(usernam),email="test@gmial.com",password=raw_password,is_staff=True)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'signup.html', {'form': form})
+
+def logout_user(req):
+    logout(req)
+    return redirect('home')
+
+def login(request):
+    pass
