@@ -35,17 +35,7 @@ def main(req):
     return render(req,"main.html")
 
 
-
-
-@staff_member_required
-def index(req):
-    return render(req,"index.html")
-
-@staff_member_required
-def main(req):
-    return render(req,"main.html")
-
-@staff_member_required
+@staff_is_required
 def add_item(req,item,qt,cmd):
     cmd1 = Commandes.objects.get(id=cmd)
     dic = ast.literal_eval(cmd1.commande)
@@ -73,7 +63,7 @@ def add_item(req,item,qt,cmd):
     return HttpResponseRedirect("/employer/commandes/sh/%s/"% cmd)
 
 
-@staff_member_required
+@staff_is_required
 def del_item(req,item,cmd):
     cmd1 = Commandes.objects.get(id=cmd)
     item = Produits.objects.get(id=item)
@@ -85,7 +75,7 @@ def del_item(req,item,cmd):
     return HttpResponseRedirect("/employer/commandes/sh/%s/"% cmd)
 
 
-@staff_member_required
+@staff_is_required
 def sh_commande(req,cmd):
     cmd1 = Commandes.objects.get(id=cmd)
     items = ast.literal_eval(cmd1.commande)
@@ -93,7 +83,7 @@ def sh_commande(req,cmd):
     items = items.items()
     return render(req,"commandes/commande_view.html",{"CMD":cmd1,"items":items,"shop_items":shop_items})
 
-@staff_member_required
+@staff_is_required
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
