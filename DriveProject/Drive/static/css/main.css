@@ -122,7 +122,10 @@ text-align: left;
 width: 50%;
 }
 
-
+img{
+  display: block;
+  margin: 0px auto;
+}
 
 .logo{
 max-width:100%;
@@ -131,6 +134,9 @@ object-fit: contain;
 height: 50px;
 }
 
+.p{
+  box-shadow:5px 5px 10px #888888; 
+}
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
