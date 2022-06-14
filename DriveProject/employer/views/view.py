@@ -202,7 +202,7 @@ def create_pdf(request,id):
         pdf.cell(col_width, th, str(str(float(dico[row]["Amount"]) * float(dico[row]["price"]))+"€"), border=1)
         pdf.ln(th)
 
-    pdf.multi_cell(0, 5, 'Total:' + '\n' +'%s €' % Total)
+    pdf.cell(col_width*4, th, str(str("Prix-total: ")+('%s €'%Total)), border=1)
     pdf.image("TEMP/codebar.png", 130, 45, 60)
     pdf.output("PDF/%s.pdf" % number)
     pdf_path = str("%s.pdf" % number)
