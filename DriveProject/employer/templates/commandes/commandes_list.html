@@ -9,18 +9,19 @@ Liste Commandes
     <thead>
         <tr>
             <th>Commandes</th>
-            <th>View</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Voir/Editer</th>
+            <th>Client / Date</th>
+            <th>Supprimer</th>
         </tr>
     </thead>
     <tbody>
         {% for Commandes in object_list %}
         <tr>
             <td>n°{{ Commandes.id }} du {{ Commandes.date }}</td>
-            <td><a href="{% url "commandes_show" Commandes.id %}">view</a></td>
-            <td><a href="{% url "commandes_update" Commandes.id %}">edit</a></td>
-            <td><a href="{% url "commandes_delete" Commandes.id %}">delete</a></td>
+            <td><a href="{% url "commandes_show" Commandes.id %}">Voir/Editer</a></td>
+            <td><a href="{% url "commandes_update" Commandes.id %}">Client / Date</a></td>
+            <td><a href="{% url "commandes_delete" Commandes.id %}">Supprimer</a></td>
+            
         </tr>
         {% endfor %}
     </tbody>
