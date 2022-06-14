@@ -13,7 +13,8 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="{% url "index"%}">Menu</a>
+        <a href="{% url "index"%}" class="menu">Menu</a>
+        <a href="/drive/sh/basket/"%}" class="menu">Mon Pannier</a>
         <div class="subnav">
           <button class="subnavbtn">Produit <i class="fa fa-caret-down"></i></button>
           <div class="subnav-content">
@@ -31,14 +32,14 @@
           </div>
         </div> 
         <div class="subnav">
-          <button class="subnavbtn">Commandes <i class="fa fa-caret-down"></i></button>
+          <button class="subnavbtn"> Mes Commandes <i class="fa fa-caret-down"></i></button>
           <div class="subnav-content">
             <a href="{% url "commandes_create"%}">Ajouter</a>
             <a href="{% url "commandes_list"%}">Liste</a>
           </div>
         </div>
         <div class="subnav">
-          <button class="subnavbtn">Clients <i class="fa fa-caret-down"></i></button>
+          <button class="subnavbtn">Mon Compte <i class="fa fa-caret-down"></i></button>
           <div class="subnav-content">
             <a href="{% url "clients_create"%}">Ajouter</a>
             <a href="{% url "clients_list"%}">Liste</a>

@@ -4,12 +4,12 @@
     
     {% block content %}
  
-        <h2>{{product.name}}</h2>
-        <h3>€{{product.price}}</h3>
-        <img src="{{product.thumbnail.url}}" alt="{{product.name}}">
+        <h2>{{product.nom}}</h2>
+        <h3>€{{product.prix}}</h3>
+        <img src="{{product.photo.url}}" alt="{{product.nom}}">
         <p>{{product.description}}</p>
-        <p> il en reste : {{product.qty}}</p>
-        <p><a href="{% url 'add-to-cart' product.slug %}">Ajouter l'article dans le panier</a>
+        <p> il en reste : {{product.stock}}</p>
+        <form action="/drive/add/{{product.id}}/1/" method="post"><input type="number" name="quantiter" min="1"> {% csrf_token %} <input type="submit" value="Ajouter au Panier"></form></td>
         
         </p>
     {%endblock%}
