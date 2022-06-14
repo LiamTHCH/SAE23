@@ -114,8 +114,9 @@ def signup(request):
             email1 = request.POST.get('email')
             passwd = make_password(raw_password)
             user = User.objects.create(username=str(usernam),email=email1,password=passwd,is_staff=False)
-            usr = Clients.objects.create(nom=nom1,prenom=prenom1,addr=addr1,date_insci=datetime.date.today())
-            request.session["user"] = usr.id
+            usr = Clients.objects.create(nom=nom1,prenom=prenom1,addr=addr1,date_insci=datetime.date.today(),username=usernam)
+            request.session["user"] = usr.username
+            request.session["cart"] = {}
             login(request, user)
             return HttpResponseRedirect("/drive/")
     else:
@@ -124,13 +125,14 @@ def signup(request):
 
 def logout_user(req):
     logout(req)
-    return redirect('home')
+    return redirect('index')
 
 
 def login_user(request):
     if request.method == 'POST':
         users = request.POST.get('user')
         passwd = request.POST.get('passwd')
+        request.session["user"] = users
         user = authenticate(username=users, password=passwd)
         if user is not None and user.is_active:
             login(request, user)
@@ -152,3 +154,11 @@ def change_passwd(request):
         return HttpResponseRedirect("/drive/")
     else:
         return render(request,"change.html")
+
+def create_commande(req):
+   dic =  req.session["cart"] 
+   id1  =  req.session["user"] 
+   clt = Clients.objects.get(username=id1)
+   Commandes.objects.create(commande=dic,date=datetime.date.today(),client=clt)
+   req.session["cart"] = {}
+   return HttpResponseRedirect("/drive/")
