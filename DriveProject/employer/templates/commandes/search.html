@@ -1,0 +1,17 @@
+{% extends "main.html" %} 
+{% block title %}
+Liste Commandes
+{% endblock %}
+{% block content %}
+<form action="" method="POST" id="form_ajout">
+    {% csrf_token %}
+    <select id="select-state" placeholder="Chercher une commande" name="commande" form="form_ajout">
+        <option value="">Selectionner Produit</option>
+        {% for comande,id,ean in commande  %}
+            <option value="{{id}}">{{ean}}</option>
+        {% endfor %}
+    <input type="submit" value="Chercher">
+</form>
+
+
+{% endblock %}

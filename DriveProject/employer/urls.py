@@ -21,6 +21,8 @@ from employer.views import ProduitCreateView
 from employer.views import ProduitListView
 from django.urls import path, include
 from employer.views import *
+from employer.decorators import *
+
 urlpatterns = [
 path('', main,name='home'),
 path('produit/', index),
@@ -47,4 +49,12 @@ path('categories/delete/<int:pk>/', CategoriesDeleteView.as_view(), name='catego
 path('commandes/add/<int:cmd>/<int:item>/<int:qt>/', add_item),
 path('commandes/del/<int:cmd>/<int:item>/', del_item),
 path('commandes/sh/<int:cmd>/', sh_commande,name='commandes_show'),
+path('signup/', signup,name='signup'),
+path('logout/', logout_user,name="logout"),
+path('login/', login_user,name="login"),
+path('change_passwd/', change_passwd,name="change_passwd"),
+path('commandes/search/', search_commande,name='commandes_search'),
+path('commandes/pdf/<int:id>/', create_pdf,name='commandes_pdf'),
 ]
+
+

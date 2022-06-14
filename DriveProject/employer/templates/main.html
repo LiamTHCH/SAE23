@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="{% url "home"%}">Menu</a>
+        <a href="{% url "home"%}"><img src="{% static 'img/logo.png' %}" alt="" class="logo"></a>
         <div class="subnav">
           <button class="subnavbtn">Produit <i class="fa fa-caret-down"></i></button>
           <div class="subnav-content">
@@ -35,6 +35,7 @@
           <div class="subnav-content">
             <a href="{% url "commandes_create"%}">Ajouter</a>
             <a href="{% url "commandes_list"%}">Liste</a>
+            <a href="{% url "commandes_search"%}">Chercher</a>
           </div>
         </div>
         <div class="subnav">
@@ -44,6 +45,23 @@
             <a href="{% url "clients_list"%}">Liste</a>
           </div>
         </div>
+        {% if user.is_authenticated %}
+        <div class="subnav">
+          <button class="subnavbtn">{{ user.get_username }}<i class="fa fa-caret-down"></i></button>
+          <div class="subnav-content">
+            <a href="{% url "logout"%}">Logout</a>
+          </div>
+        </div>
+        {% else %}
+        <div class="subnav">
+          <button class="subnavbtn">Account<i class="fa fa-caret-down"></i></button>
+          <div class="subnav-content">
+            <a href="{% url "login"%}">Login</a>
+          </div>
+        </div>
+        {% endif %}
+
+
       </div>
       
 
