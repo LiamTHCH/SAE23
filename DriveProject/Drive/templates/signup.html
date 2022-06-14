@@ -1,0 +1,16 @@
+
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <label for="email">Email:</label>
+    <input type="text" name="email">
+    <label for="addr">Adresse:</label>
+    <input type="text" name="addr">
+    <label for="nom">Nom:</label>
+    <input type="text" name="nom">
+    <label for="prenom">Prenom:</label>
+    <input type="text" name="prenom">
+    <br>
+    <button type="submit">Sign up</button>
+  </form>

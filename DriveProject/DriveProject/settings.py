@@ -27,7 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+LOGIN_URL = "/drive/login/"
+LOGIN_REDIRECT_URL = "/drive/"
+LOGOUT_REDIRECT_URL = "/drive/"
 # Application definition
 
 INSTALLED_APPS = [
