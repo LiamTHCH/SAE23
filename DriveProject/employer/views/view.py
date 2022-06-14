@@ -155,6 +155,7 @@ def search_commande(req):
 
 
 def create_pdf(request,id):
+    print(os.getcwd())
     os.chdir("media/")
     print("START")
     cmd = Commandes.objects.get(id=id)
@@ -186,7 +187,7 @@ def create_pdf(request,id):
     col_width = epw / 4
     th = pdf.font_size
     pdf.ln(10)
-    pdf.add_font('Times', '', 'c:/windows/fonts/arial.ttf', uni=True)
+    pdf.add_font('Times', '', 'arial.ttf', uni=True)
     pdf.set_font('Times', '', 12)
     pdf.cell(col_width, th, str("Article"), border=1)
     pdf.cell(col_width, th, str("Quantité"), border=1)
