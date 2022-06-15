@@ -1,0 +1,23 @@
+{% extends "main.html" %} 
+{% block title %}
+Creation Commandes
+{% endblock %}
+{% block content %}
+<h2 class="form-title">Cree commande</h2>
+    <form class="" method="post">
+        {% csrf_token %}
+        {{ form.client }}
+        <div class="datepicker" id="picker">{{ form.date }}</div>
+        <input type="submit" value="Suivant" />
+        <div class="invisible">{{ form.commande }}</div>
+    </form>
+<script>
+    $(document).ready(function () {
+    $('select').selectize({
+        sortField: 'text'
+    });
+});
+    
+</script>
+
+{% endblock %}

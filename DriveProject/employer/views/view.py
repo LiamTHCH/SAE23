@@ -15,7 +15,7 @@ from barcode import EAN13
 from barcode.writer import ImageWriter
 from employer.decorators import *
 import os
-
+from django.contrib.auth.hashers import make_password, check_password
 
 def getList(dict):
 
@@ -93,8 +93,9 @@ def signup(request):
         if form.is_valid():
             usernam = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
-            email = form.cleaned_data.get('email')
-            user = User.objects.create(username=str(usernam),email="test@gmial.com",password=raw_password,is_staff=True)
+            email1 = request.POST.get('email')
+            passwd = make_password(raw_password)
+            user = User.objects.create(username=str(usernam),email=email1,password=passwd,is_staff=True)
             login(request, user)
             return redirect('home')
     else:
@@ -202,7 +203,7 @@ def create_pdf(request,id):
         pdf.cell(col_width, th, str(str(float(dico[row]["Amount"]) * float(dico[row]["price"]))+"€"), border=1)
         pdf.ln(th)
 
-    pdf.multi_cell(0, 5, 'Total:' + '\n' +'%s €' % Total)
+    pdf.cell(col_width*4, th, str(str("Prix-total: ")+('%s €'%Total)), border=1)
     pdf.image("TEMP/codebar.png", 130, 45, 60)
     pdf.output("PDF/%s.pdf" % number)
     pdf_path = str("%s.pdf" % number)

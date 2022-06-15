@@ -1,0 +1,14 @@
+{% extends "mainc.html" %} 
+{% block title %}
+Produit
+{% endblock %}
+{% block content %}
+<h1>Bienvenue sur notre drive ! </h1>
+{%for product in products%}
+    <h2>{{product.nom}}</h2>
+    <img src="{{product.photo.url}}" alt="{{product.nom}}" style="max-width:250px;">
+    <a href="/drive/sh/{{product.id}}">Voir le produit</a>
+    <p>{{product.prix}} €</p>
+    
+{%endfor%}
+{% endblock %}

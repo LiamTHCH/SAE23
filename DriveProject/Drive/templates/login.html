@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  </head>
+<body>
+
+
+<div class="container" onclick="onclick">
+  <div class="top"></div>
+  <div class="bottom"></div>
+  <div class="center">
+    <h2>login</h2>
+    <form action="/drive/login/" method="post">
+      {% csrf_token %}
+
+    <input type="user" placeholder="user" name="user"/>
+    <input type="password" placeholder="password" name="passwd"/>
+    <input type="submit" hidden />
+  </form>
+    <h2>&nbsp;</h2>
+  </div>
+</div>
+
+</body>
+</html>

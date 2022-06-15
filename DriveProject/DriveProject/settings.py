@@ -27,7 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+LOGIN_URL = "/drive/login/"
+LOGIN_REDIRECT_URL = "/drive/"
+LOGOUT_REDIRECT_URL = "/drive/"
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'DriveProject.urls'
@@ -82,6 +86,16 @@ DATABASES = {
     }
 }
 
+###DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'dbtest', 
+#        'USER': 'postgres', 
+#        'PASSWORD': '1234',
+#        'HOST': '127.0.0.1', 
+#        'PORT': '5432',
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

@@ -1,0 +1,37 @@
+{% extends "mainc.html" %} 
+{% block title %}
+Liste Commandes
+{% endblock %}
+{% block content %}
+<h2 class="Titre">Mon Pannier</h2>
+<table class="sh_commande">
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Quantiter</th>
+            <th>Details Produit</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for key, value in items %} 
+        <tr>
+            <td>{{ key }}</td>
+            {% for key2, value2 in value.items %} 
+                {% if key2 == "Amount" %} 
+                    <td>{{ value2 }}</td>
+                {% endif %}
+                {% if key2 == "id" %} 
+                    <td><a href="/drive/sh/{{value2}}/">Details</a></td>
+                    <td><label for="quantiter">Quantiter:</label><form action="/drive/ch/{{value2}}/1/" method="post"><input type="number" name="quantiter" min="1"> {% csrf_token %} <input type="submit" value="Changer"></form></td>
+                    <td><a href="/drive/del/{{value2}}/">Delete</a></td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table> 
+
+<form action="" method="POST"></form>
+{% endblock %}

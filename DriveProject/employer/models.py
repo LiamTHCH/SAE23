@@ -26,6 +26,7 @@ class Clients(models.Model):
     prenom = models.CharField(max_length=30)
     date_insci = models.DateField()
     addr = models.CharField(max_length=50)
+    username = models.TextField(null=False)
 
     def __str__(self) -> str:
         return str(str(self.prenom).upper()+" " +str(self.nom))

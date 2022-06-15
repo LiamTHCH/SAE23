@@ -1,0 +1,15 @@
+
+{% extends 'mainc.html'%}
+
+    
+    {% block content %}
+ 
+        <h2>{{product.nom}}</h2>
+        <h3>€{{product.prix}}</h3>
+        <img src="{{product.photo.url}}" alt="{{product.nom}}">
+        <p>{{product.description}}</p>
+        <p> il en reste : {{product.stock}}</p>
+        <form action="/drive/add/{{product.id}}/1/" method="post"><input type="number" name="quantiter" min="1"> {% csrf_token %} <input type="submit" value="Ajouter au Panier"></form></td>
+        
+        </p>
+    {%endblock%}

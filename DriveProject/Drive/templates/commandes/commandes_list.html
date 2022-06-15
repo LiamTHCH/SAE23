@@ -1,0 +1,31 @@
+{% extends "main.html" %} 
+{% block title %}
+Liste Commandes
+{% endblock %}
+{% block content %}
+<h2 class="form-title">Commandes</h2>
+
+<table class="table table-fluid">
+    <thead>
+        <tr>
+            <th>Commandes</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for Commandes in object_list %}
+        <tr>
+            <td>n°{{ Commandes.id }} du {{ Commandes.date }}</td>
+            <td><a href="{% url "commandes_show" Commandes.id %}">view</a></td>
+            <td><a href="{% url "commandes_update" Commandes.id %}">edit</a></td>
+            <td><a href="{% url "commandes_delete" Commandes.id %}">delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url "commandes_create" %}">New</a>
+</div>
+{% endblock %}
