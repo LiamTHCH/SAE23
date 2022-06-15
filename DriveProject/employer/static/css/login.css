@@ -79,3 +79,10 @@
 	 font-family: inherit;
 }
  
+.sign{
+	text-align: center	;
+}
+.signcontainer{
+	display: flex;
+	justify-content: center;
+}
