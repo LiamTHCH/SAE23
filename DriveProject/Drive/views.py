@@ -23,7 +23,6 @@ def getList(dict):
 def index(request):
     query = Produits.objects.all()
     return render(request,"indexc.html",context={"products":query}) 
-
     
 @login_required
 def add_item(req,item,qt):
@@ -50,7 +49,6 @@ def add_item(req,item,qt):
     req.session["cart"] = dic
     return HttpResponseRedirect("/drive/sh/%s/"% item.id)
 
-
 @login_required
 def sh_item(req,item):
     query = Produits.objects.get(id=item)
@@ -65,6 +63,7 @@ def del_item(req,item):
             del dic[item1]
     req.session["cart"] = dic
     return HttpResponseRedirect("/drive/sh/basket/")
+
 @login_required
 def sh_basket(req):
     if req.method == 'POST':  
@@ -99,9 +98,6 @@ def change_item(req,item,qt):
     req.session["cart"] = dic
     return HttpResponseRedirect("/drive/sh/basket/")
 
-
-
-
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -127,7 +123,6 @@ def logout_user(req):
     logout(req)
     return redirect('index')
 
-
 def login_user(request):
     if request.method == 'POST':
         users = request.POST.get('user')
@@ -143,6 +138,7 @@ def login_user(request):
     else:
         return render(request,"login.html")
 @login_required
+
 def change_passwd(request):
     if request.method == 'POST':
         users = request.POST.get('user')

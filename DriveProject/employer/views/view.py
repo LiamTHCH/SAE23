@@ -16,6 +16,9 @@ from barcode.writer import ImageWriter
 from employer.decorators import *
 import os
 from django.contrib.auth.hashers import make_password, check_password
+import yaml
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
 def getList(dict):
 
@@ -208,3 +211,14 @@ def create_pdf(request,id):
     pdf.output("PDF/%s.pdf" % number)
     pdf_path = str("%s.pdf" % number)
     return HttpResponseRedirect("/media/PDF/%s"% pdf_path)
+
+def simple_upload(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        return render(request, 'produit/upload_yaml.html', {
+            'uploaded_file_url': uploaded_file_url
+        })
+    return render(request, 'produit/upload_yaml.html')
