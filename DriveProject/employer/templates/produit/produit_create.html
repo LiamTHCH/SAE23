@@ -4,7 +4,7 @@ Creation Porduit
 {% endblock %}
 {% block content %}
 <h2 class="form-title">Add Produit</h2>
-    <form class="" method="post">
+    <form class="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_ul }}
         <input type="submit" value="Submit" />

@@ -9,7 +9,6 @@ from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.forms import *
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.admin.views.decorators import staff_member_required
 from fpdf import FPDF
 from barcode import EAN13
 from barcode.writer import ImageWriter

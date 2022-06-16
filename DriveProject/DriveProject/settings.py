@@ -25,12 +25,9 @@ SECRET_KEY = 'django-insecure-4xcc^xkk0i+b3e+i&$r82v-@(1d^smx=nkm(w1g-9%90w7pjv0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','https://drive.liamtc.tech']
+ALLOWED_HOSTS = ['*','https://drive.liamtc.tech','10.0.1.148']
 CSRF_TRUSTED_ORIGINS = ['https://*.liamtc.tech','https://*.127.0.0.1']
 
-LOGIN_URL = "/drive/login/"
-LOGIN_REDIRECT_URL = "/drive/"
-LOGOUT_REDIRECT_URL = "/drive/"
 # Application definition
 
 INSTALLED_APPS = [
@@ -134,7 +131,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

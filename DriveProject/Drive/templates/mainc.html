@@ -15,36 +15,15 @@
     <div class="navbar">
         <a href="{% url "index"%}" class="menu">Menu</a>
         <a href="/drive/sh/basket/"%}" class="menu">Mon Pannier</a>
-        <div class="subnav">
-          <button class="subnavbtn">Produit <i class="fa fa-caret-down"></i></button>
-          <div class="subnav-content">
-            <a href="{% url "produit_create"%}">Ajouter</a>
-            <a href="{% url "produit_list"%}">Liste</a>
-            <a href="#careers">Chercher</a>
-          </div>
-        </div> 
-        <div class="subnav">
-          <button class="subnavbtn">Categories <i class="fa fa-caret-down"></i></button>
-          <div class="subnav-content">
-            <a href="{% url "categories_create"%}">Ajouter</a>
-            <a href="{% url "categories_list"%}">Liste</a>
-            <a href="#package">Chercher</a>
-          </div>
-        </div> 
-        <div class="subnav">
-          <button class="subnavbtn"> Mes Commandes <i class="fa fa-caret-down"></i></button>
-          <div class="subnav-content">
-            <a href="{% url "commandes_create"%}">Ajouter</a>
-            <a href="{% url "commandes_list"%}">Liste</a>
-          </div>
-        </div>
         {% if user.is_authenticated %}
         <div class="subnav">
           <button class="subnavbtn">{{ user.get_username }}<i class="fa fa-caret-down"></i></button>
           <div class="subnav-content">
             <a href="{% url "logout"%}">Logout</a>
-            <a href="{% url "change_passwd"%}">Change Password</a>
-            change_passwd
+            <a href="{% url "change_passwd_user"%}">Change Password</a>
+	{% if user.is_staff %}
+	    <a href="/employer/">Portail Employer</a>
+	{% endif %}
           </div>
         </div>
         {% else %}

@@ -137,7 +137,7 @@ def login_user(request):
             return render(request,"login.html")
     else:
         return render(request,"login.html")
-@login_required
+
 
 def change_passwd(request):
     if request.method == 'POST':
