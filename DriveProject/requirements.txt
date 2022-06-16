@@ -37,7 +37,7 @@ pycups==2.0.1
 pycurl==7.43.0.6
 PyGObject==3.38.0
 pyinotify==0.9.6
-PyJWT==1.7.1
+PyJWT==2.4.0
 pyrsistent==0.15.5
 PySimpleSOAP==1.16.2
 pysmbc==1.0.23
