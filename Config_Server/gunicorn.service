@@ -1,0 +1,11 @@
+[Unit] 
+Description=gunicorn daemon 
+Requires=gunicorn.socket 
+After=network.target 
+[Service] 
+User=root
+Group=www-data 
+WorkingDirectory=/home/debian/myprojectdir/SAE23/DriveProject 
+ExecStart=/home/debian/myprojectdir/SAE23/DriveProject/run.sh 
+[Install]
+WantedBy=multi-user.target
