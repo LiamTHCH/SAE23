@@ -5,5 +5,5 @@ from employer.models import Commandes
 
 class CommandesDeleteView(DeleteView):
     model = Commandes
-    template_name = "commandes/commandes_delete.html"
+    template_name = "commande_delete.html"
     success_url = reverse_lazy('commandes_list')

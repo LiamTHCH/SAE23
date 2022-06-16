@@ -86,7 +86,7 @@ def sh_commande(req,cmd):
     items = ast.literal_eval(cmd1.commande)
     shop_items = Produits.objects.all()
     items = items.items()
-    return render(req,"commandes/commande_view.html",{"CMD":cmd1,"items":items,"shop_items":shop_items})
+    return render(req,"commande_view.html",{"CMD":cmd1,"items":items,"shop_items":shop_items})
 
 @staff_is_required
 def signup(request):
@@ -209,6 +209,7 @@ def create_pdf(request,id):
     pdf.image("TEMP/codebar.png", 130, 45, 60)
     pdf.output("PDF/%s.pdf" % number)
     pdf_path = str("%s.pdf" % number)
+    os.chdir("../")
     return HttpResponseRedirect("/media/PDF/%s"% pdf_path)
 
 def simple_upload(request):

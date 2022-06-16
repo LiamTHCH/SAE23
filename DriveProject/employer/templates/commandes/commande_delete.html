@@ -5,7 +5,7 @@ Effaver commande
 {% block content %}
 <h2 class="form-title"> Delete Commandes </h2>
 <form method="post">{% csrf_token %}
-    <p>Are you sure you want to delete ?</p>
+    <p>Are you sure you want to delete "{{ object }}"?</p>
     <input type="submit" value="Confirm">
 </form>
 {% endblock %}
