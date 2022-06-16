@@ -24,6 +24,7 @@ SECRET_KEY = 'django-insecure-4xcc^xkk0i+b3e+i&$r82v-@(1d^smx=nkm(w1g-9%90w7pjv0
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+LOGIN_URL = "/drive/login/"
 
 ALLOWED_HOSTS = ['*','https://drive.liamtc.tech','10.0.1.148']
 CSRF_TRUSTED_ORIGINS = ['https://*.liamtc.tech','https://*.127.0.0.1']
