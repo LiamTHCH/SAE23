@@ -46,7 +46,7 @@ python-barcode==0.14.0
 python-debian==0.1.39
 python-debianbts==3.1.0
 pyxdg==0.27
-PyYAML==5.3.1
+PyYAML==5.4
 qrcode==7.3.1
 quodlibet==4.3.0
 regex==2022.4.24
