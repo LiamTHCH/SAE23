@@ -12,7 +12,7 @@ class Categories(models.Model):
 class Produits(models.Model):
     nom = models.CharField(max_length=30,null=False)
     date_per = models.DateField(null=False)
-    photo = models.ImageField(blank=False)
+    photo = models.FileField(blank=False,upload_to="produit")
     marque = models.CharField(max_length=30)
     categorie = models.ForeignKey(Categories,on_delete=models.SET_NULL,null=True)
     stock = models.PositiveIntegerField()
