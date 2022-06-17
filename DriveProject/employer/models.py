@@ -32,11 +32,10 @@ class Clients(models.Model):
         return str(str(self.prenom).upper()+" " +str(self.nom))
 
 class Commandes(models.Model):
-    client = models.ForeignKey(Clients,on_delete=models.CASCADE)
-    date = models.DateTimeField()
+    client = models.ForeignKey(Clients,on_delete=models.CASCADE,null=False)
+    date = models.DateTimeField(null=False)
     commande = models.TextField(null=False,default="{}")
 
     def __str__(self) -> str:
-        return str(client)+str(date)
-    
+        return str(date)
 

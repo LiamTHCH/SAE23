@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}LER Drive{% endblock %} </title>
+    <link rel="stylesheet" href="{% static 'css/button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -12,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
 </head>
 <body>
+<header>
     <div class="navbar">
         <a href="{% url "index"%}" class="menu">Menu</a>
         <a href="/drive/sh/basket/"%}" class="menu">Mon Pannier</a>
@@ -40,7 +43,7 @@
       <a href="{% url "index"%}">
       <h1>LER Drive</h1>
       </a>
-
+</header>
     <div id="content">
         {% block content %}
 
