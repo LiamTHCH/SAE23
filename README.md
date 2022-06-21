@@ -1,8 +1,7 @@
 # SAE23
 
 example Fichier YML:
-
-´´´
+ 	``` 
 nom: PS5
 marque: Sony
 categorie: NULL
@@ -10,4 +9,4 @@ stock: 3
 prix: 330
 photo: https://hard-pro.net/wp-content/uploads/2020/11/PS5.jpg
 date_per: 10/02/2050
-´´´
+ 	``` 
