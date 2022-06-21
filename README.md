@@ -14,3 +14,5 @@ photo: https://hard-pro.net/wp-content/uploads/2020/11/PS5.jpg
 date_per: 10/02/2050
 
 ``` 
+
+Déploiement : Voir Wiki
