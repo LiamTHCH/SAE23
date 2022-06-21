@@ -2,7 +2,7 @@ from operator import mod
 from tokenize import group
 from django.shortcuts import render
 from employer.models import *
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponseBadRequest
 import copy
 import ast
 from django.contrib.auth import login, authenticate,logout
@@ -18,7 +18,7 @@ from django.contrib.auth.hashers import make_password, check_password
 import yaml
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-
+from django.core.exceptions import SuspiciousOperation
 def getList(dict):
 
 
@@ -218,7 +218,12 @@ def simple_upload(request):
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
-        return render(request, 'produit/upload_yaml.html', {
-            'uploaded_file_url': uploaded_file_url
-        })
+        dic = yaml.safe_load(myfile)
+        try:
+            Produits.objects.create(nom=dict["nom"],marque=dict["marque"],categorie=dic["categortie"],stock=dic["stcok"],prix=["prix"],date_per=dic["date_per"],photo=myfile)
+            return render(request, 'produit/upload_yaml.html')
+        except Exception as e:
+            print(e)
+            print("erreur")
+            return HttpResponseBadRequest('Erreur Parsing', status=405)
     return render(request, 'produit/upload_yaml.html')
