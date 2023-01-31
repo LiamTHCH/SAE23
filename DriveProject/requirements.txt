@@ -10,7 +10,7 @@ cryptography==3.3.2
 cupshelpers==1.0
 dbus-python==1.2.16
 distlib==0.3.4
-Django==4.0.5
+Django==4.0.8
 feedparser==5.2.1
 filelock==3.7.1
 fpdf==1.7.2
